@@ -2,11 +2,18 @@ import { NgModule } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
 
+// components
 import { AppComponent } from './app.component';
 import { InputComponent } from './components/input/input.component';
 import { ButtonComponent } from './components/button/button.component';
+
+// containers
 import { DashboardComponent } from './containers/dashboard/dashboard.component';
+
+// modules
 import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { dashboardReducer } from './state/dashboard.reducer';
 
 @NgModule({
   declarations: [
@@ -15,7 +22,7 @@ import { FormsModule } from '@angular/forms';
     ButtonComponent,
     DashboardComponent,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, StoreModule.forRoot({counter: dashboardReducer})],
   providers: [],
   bootstrap: [AppComponent],
 })
