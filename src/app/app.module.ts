@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 
-import { BrowserModule } from '@angular/platform-browser';
-
 // components
 import { AppComponent } from './app.component';
 import { InputComponent } from './components/input/input.component';
@@ -11,6 +9,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { DashboardComponent } from './containers/dashboard/dashboard.component';
 
 // modules
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { dashboardReducer } from './state/dashboard.reducer';
