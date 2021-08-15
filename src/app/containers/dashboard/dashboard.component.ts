@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
     </app-button>
 
     <app-button (onClick)="handleReset()">
-      <ng-container text>Decrement</ng-container>
+      <ng-container text>Reset</ng-container>
     </app-button>
   </div>`,
 })
@@ -32,3 +32,4 @@ export class DashboardComponent {
     this.value = 0;
   }
 }
+
