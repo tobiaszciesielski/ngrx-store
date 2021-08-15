@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
 
-import { Store } from './store';
-
 import { AppComponent } from './app.component';
 import { InputComponent } from './components/input/input.component';
 import { ButtonComponent } from './components/button/button.component';
@@ -18,7 +16,7 @@ import { FormsModule } from '@angular/forms';
     DashboardComponent,
   ],
   imports: [BrowserModule, FormsModule],
-  providers: [Store],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
