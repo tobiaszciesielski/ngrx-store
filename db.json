@@ -1,0 +1,24 @@
+{
+  "pizzas": [
+    {
+      "id": 0,
+      "name": "Margarita",
+      "ingredients": ["Buffalo mozzarella", "Tomato sauce", "Basil"]
+    },
+    {
+      "id": 1,
+      "name": "Salami",
+      "ingredients": ["Cheddar cheese", "Tomato sauce", "Hot Salami"]
+    },
+    {
+      "id": 2,
+      "name": "Broccoli & Chicken",
+      "ingredients": [
+        "Mozzarella cheese",
+        "Tomato sauce",
+        "Broccoli",
+        "Chicken"
+      ]
+    }
+  ]
+}
