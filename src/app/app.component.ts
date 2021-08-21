@@ -1,40 +1,46 @@
-import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-interface Pizza {
-  id?: number;
-  name: string;
-  ingredients: string[];
-}
+import { Pizza } from './models/Pizza';
+import { PizzaService } from './app.service';
 
 @Component({
   template: `
     <h1>Pizzas</h1>
-    <div *ngFor="let pizza of pizzas">
-      <h3>{{ pizza.name }}</h3>
-      <ul>
-        <li *ngFor="let ingredient of pizza.ingredients">
-          {{ ingredient }}
-        </li>
-      </ul>
-    </div>
+    <ng-template [ngIf]="isLoading" [ngIfElse]="PizzasTemplate">
+      <h3>Loading...</h3>
+    </ng-template>
+
+    <ng-template #PizzasTemplate>
+      <div *ngFor="let pizza of pizzas" class="pizza">
+        <img [src]="pizza.imageUrl" class="pizza__image" />
+        <div>
+          <h3>{{ pizza.name }}</h3>
+          <ul>
+            <li *ngFor="let ingredient of pizza.ingredients">
+              {{ ingredient }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </ng-template>
   `,
   selector: 'app-root',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   pizzas!: Pizza[];
+  isLoading: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private pizzaService: PizzaService) {}
 
   ngOnInit() {
     this.getPizzas();
   }
 
-  async getPizzas() {
-    this.pizzas = await this.http
-      .get<Pizza[]>('http://localhost:3000/pizzas')
-      .toPromise();
+  getPizzas() {
+    this.isLoading = true;
+    this.pizzaService.getAllPizzas().subscribe((pizzas) => {
+      this.pizzas = pizzas;
+      this.isLoading = false;
+    });
   }
 }

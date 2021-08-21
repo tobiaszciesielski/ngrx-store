@@ -3,22 +3,20 @@
     {
       "id": 0,
       "name": "Margarita",
+      "imageUrl": "https://cdn.upmenu.com/static/product-images/2df739b6-66ff-11e7-93f9-525400841de1/b5a52c31-ab4c-11eb-a1e9-525400080521/3/huge/margherita.jpg",
       "ingredients": ["Buffalo mozzarella", "Tomato sauce", "Basil"]
     },
     {
       "id": 1,
       "name": "Salami",
+      "imageUrl": "https://cdn.upmenu.com/static/product-images/2df739b6-66ff-11e7-93f9-525400841de1/f31925ea-8577-11ea-af2a-525400080321/3/huge/salamepicante.jpg",
       "ingredients": ["Cheddar cheese", "Tomato sauce", "Hot Salami"]
     },
     {
       "id": 2,
-      "name": "Broccoli & Chicken",
-      "ingredients": [
-        "Mozzarella cheese",
-        "Tomato sauce",
-        "Broccoli",
-        "Chicken"
-      ]
+      "name": "Prosciutto",
+      "imageUrl": "https://cdn.upmenu.com/static/product-images/2df739b6-66ff-11e7-93f9-525400841de1/81924385-8577-11ea-af2a-525400080321/3/huge/prosciutto.jpg",
+      "ingredients": ["Mozzarella cheese", "Tomato sauce", "Prosciutto Ham"]
     }
   ]
 }
