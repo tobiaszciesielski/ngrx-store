@@ -1,0 +1,9 @@
+<img [src]="pizza.imageUrl" class="image" />
+<div>
+  <h3>{{ pizza.name }}</h3>
+  <ul>
+    <li *ngFor="let ingredient of pizza.ingredients">
+      {{ ingredient }}
+    </li>
+  </ul>
+</div>
