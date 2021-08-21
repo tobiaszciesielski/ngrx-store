@@ -5,7 +5,6 @@ import { PizzaService } from './app.service';
 @Component({
   template: ` <app-pizzas-list [pizzas]="pizzas"></app-pizzas-list> `,
   selector: 'app-root',
-  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   pizzas!: Pizza[];

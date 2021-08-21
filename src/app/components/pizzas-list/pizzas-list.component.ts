@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Pizza } from 'src/app/models/Pizza';
 
 @Component({
@@ -6,11 +6,11 @@ import { Pizza } from 'src/app/models/Pizza';
   templateUrl: './pizzas-list.component.html',
   styleUrls: ['./pizzas-list.component.scss'],
 })
-export class PizzasListComponent implements OnInit {
+export class PizzasListComponent {
   @Input()
   pizzas!: Pizza[];
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  onClick() {
+    console.log('hello');
+  }
 }
