@@ -17,7 +17,6 @@ export class AppButtonComponent {
 
   @Input()
   public set fullWidth(value: boolean) {
-    console.log('Setted to full width');
     this._fullWidth = value;
   }
 
