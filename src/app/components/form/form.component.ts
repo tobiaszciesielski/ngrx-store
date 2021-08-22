@@ -1,5 +1,5 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
-import { FormBuilder, FormArray, Validators, FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -10,7 +10,10 @@ export class FormComponent {
   pizzaForm = this.fb.group({
     name: ['', Validators.required],
     imageUrl: ['', Validators.required],
-    ingredients: this.fb.array([new FormControl('', Validators.required)], Validators.required),
+    ingredients: this.fb.array(
+      [this.fb.control('', Validators.required)],
+      Validators.required
+    ),
   });
 
   constructor(private fb: FormBuilder) {}

@@ -9,7 +9,12 @@ import {
 @Component({
   selector: 'app-button',
   template: `
-    <button [disabled]="disabled" [type]="type" (click)="onClick.emit()" [class]="className">
+    <button
+      [disabled]="disabled"
+      [type]="type"
+      (click)="onClick.emit()"
+      [class]="className"
+    >
       <ng-content></ng-content>
     </button>
   `,

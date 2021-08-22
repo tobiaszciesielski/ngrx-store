@@ -6,4 +6,7 @@
       {{ ingredient }}
     </li>
   </ul>
+
+  <app-button (onClick)="onView()">View</app-button>
+  <app-button (onClick)="onDelete.emit(pizza.id)">Delete</app-button>
 </div>

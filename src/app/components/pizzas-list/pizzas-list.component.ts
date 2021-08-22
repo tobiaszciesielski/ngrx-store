@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pizza } from 'src/app/models/Pizza';
 
@@ -11,9 +11,12 @@ export class PizzasListComponent {
   @Input()
   pizzas!: Pizza[];
 
+  @Output()
+  onDelete: EventEmitter<any> = new EventEmitter();
+
   constructor(private router: Router) {}
 
   onClick() {
-    this.router.navigate(['/form']);
+    this.router.navigate(['/pizzas/new']);
   }
 }

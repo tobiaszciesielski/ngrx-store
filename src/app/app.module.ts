@@ -21,9 +21,15 @@ import { NotFoundComponent } from './notFound.component';
 import { FormComponent } from './components/form/form.component';
 
 const routes: Routes = [
+  {
+    path: 'pizzas',
+    children: [
+      { path: '', component: PizzasComponent },
+      { path: ':id', component: PizzaViewComponent },
+      { path: 'new', component: PizzaViewComponent },
+    ],
+  },
   { path: '', redirectTo: '/pizzas', pathMatch: 'full' },
-  { path: 'pizzas', component: PizzasComponent },
-  { path: 'form', component: PizzaViewComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
