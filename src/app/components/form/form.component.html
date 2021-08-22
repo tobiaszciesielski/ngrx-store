@@ -1,0 +1,33 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="pizzaForm">
+  <label>
+    <input placeholder="Pizza name" formControlName="name" />
+  </label>
+  <label>
+    <input placeholder="Image url" formControlName="imageUrl" />
+  </label>
+
+  <div formArrayName="ingredients">
+    <h4>Ingredients</h4>
+
+    <ng-container
+      *ngFor="let ingredient of ingredients.controls; let i = index"
+    >
+      <label>
+        <input placeholder="ex. cheese" type="text" [formControlName]="i" />
+        <app-button
+          class="delete-btn"
+          type="button"
+          (onClick)="deleteIngredient(i)"
+        >
+          -
+        </app-button>
+      </label>
+    </ng-container>
+
+    <app-button type="button" (onClick)="addIngredients()">
+      + Add another ingredient
+    </app-button>
+  </div>
+
+  <app-button [disabled]="!pizzaForm.valid">submit</app-button>
+</form>

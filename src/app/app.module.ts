@@ -3,13 +3,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // services
 import { PizzaService } from './app.service';
-import { FormComponent } from './containers/form/form.component';
+import { PizzaViewComponent } from './containers/pizza-view/pizza-view.component';
 
 // containers
-import { DashboardComponent } from './containers/dashboard/dashboard.component';
+import { PizzasComponent } from './containers/pizzas/pizzas.component';
 
 // components
 import { AppComponent } from './app.component';
@@ -17,11 +18,12 @@ import { PizzaComponent } from './components/pizza/pizza.component';
 import { PizzasListComponent } from './components/pizzas-list/pizzas-list.component';
 import { ButtonComponent } from './components/app-button/app-button.component';
 import { NotFoundComponent } from './notFound.component';
+import { FormComponent } from './components/form/form.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'form', component: FormComponent },
+  { path: '', redirectTo: '/pizzas', pathMatch: 'full' },
+  { path: 'pizzas', component: PizzasComponent },
+  { path: 'form', component: PizzaViewComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
@@ -35,10 +37,17 @@ const routes: Routes = [
     NotFoundComponent,
 
     // containers
-    DashboardComponent,
+    PizzasComponent,
+    PizzaViewComponent,
     FormComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(routes)],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes),
+  ],
   providers: [PizzaService],
   bootstrap: [AppComponent],
 })

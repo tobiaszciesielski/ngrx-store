@@ -1,9 +1,15 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Attribute,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'app-button',
   template: `
-    <button (click)="onClick.emit()" [class]="className">
+    <button [disabled]="disabled" [type]="type" (click)="onClick.emit()" [class]="className">
       <ng-content></ng-content>
     </button>
   `,
@@ -19,6 +25,11 @@ export class ButtonComponent {
   public set fullWidth(value: boolean) {
     this._fullWidth = value;
   }
+
+  @Input()
+  public disabled: boolean = false;
+
+  constructor(@Attribute('type') public type: 'button' | 'submit') {}
 
   public get className() {
     return 'button' + (this._fullWidth ? ' full-width' : '');

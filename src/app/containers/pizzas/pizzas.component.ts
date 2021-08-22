@@ -3,10 +3,10 @@ import { Pizza } from 'src/app/models/Pizza';
 import { PizzaService } from 'src/app/app.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
+  selector: 'app-pizzas',
+  templateUrl: './pizzas.component.html',
 })
-export class DashboardComponent {
+export class PizzasComponent {
   pizzas!: Pizza[];
 
   constructor(private pizzaService: PizzaService) {}
