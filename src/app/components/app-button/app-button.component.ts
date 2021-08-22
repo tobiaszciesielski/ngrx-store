@@ -9,7 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   `,
   styleUrls: ['./app-button.component.scss'],
 })
-export class AppButtonComponent {
+export class ButtonComponent {
   _fullWidth: boolean = false;
 
   @Output()

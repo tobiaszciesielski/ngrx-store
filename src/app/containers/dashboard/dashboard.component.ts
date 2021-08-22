@@ -6,7 +6,7 @@ import { PizzaService } from 'src/app/app.service';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
 })
-export class AppDashboardComponent {
+export class DashboardComponent {
   pizzas!: Pizza[];
 
   constructor(private pizzaService: PizzaService) {}

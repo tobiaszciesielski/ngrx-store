@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pizza } from 'src/app/models/Pizza';
 
 @Component({
@@ -6,11 +7,13 @@ import { Pizza } from 'src/app/models/Pizza';
   templateUrl: './pizzas-list.component.html',
   styleUrls: ['./pizzas-list.component.scss'],
 })
-export class AppPizzasListComponent {
+export class PizzasListComponent {
   @Input()
   pizzas!: Pizza[];
 
+  constructor(private router: Router) {}
+
   onClick() {
-    console.log('hello');
+    this.router.navigate(['/form']);
   }
 }
