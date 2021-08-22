@@ -1,23 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Pizza } from './models/Pizza';
-import { PizzaService } from './app.service';
+import { Component } from '@angular/core';
 
 @Component({
-  template: ` <app-pizzas-list [pizzas]="pizzas"></app-pizzas-list> `,
+  template: `<app-dashboard></app-dashboard>`,
   selector: 'app-root',
 })
-export class AppComponent implements OnInit {
-  pizzas!: Pizza[];
-
-  constructor(private pizzaService: PizzaService) {}
-
-  ngOnInit() {
-    this.getPizzas();
-  }
-
-  getPizzas() {
-    this.pizzaService.getAllPizzas().subscribe((pizzas) => {
-      this.pizzas = pizzas;
-    });
-  }
-}
+export class AppComponent {}

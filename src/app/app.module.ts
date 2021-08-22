@@ -2,21 +2,30 @@ import { NgModule } from '@angular/core';
 
 // components
 import { AppComponent } from './app.component';
+import { AppPizzaComponent } from './components/pizza/pizza.component';
+import { AppPizzasListComponent } from './components/pizzas-list/pizzas-list.component';
+import { AppButtonComponent } from './components/app-button/app-button.component';
+
+// containers
+import { AppDashboardComponent } from './containers/dashboard/dashboard.component';
 
 // modules
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+
+// services
 import { PizzaService } from './app.service';
-import { PizzaComponent } from './components/pizza/pizza.component';
-import { PizzasListComponent } from './components/pizzas-list/pizzas-list.component';
-import { AppButtonComponent } from './components/app-button/app-button.component';
 
 @NgModule({
   declarations: [
+    // components
     AppComponent,
-    PizzaComponent,
-    PizzasListComponent,
+    AppPizzaComponent,
+    AppPizzasListComponent,
     AppButtonComponent,
+
+    // containers
+    AppDashboardComponent,
   ],
   imports: [BrowserModule, HttpClientModule],
   providers: [PizzaService],

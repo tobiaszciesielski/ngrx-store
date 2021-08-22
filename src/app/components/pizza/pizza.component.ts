@@ -6,7 +6,7 @@ import { Pizza } from 'src/app/models/Pizza';
   templateUrl: './pizza.component.html',
   styleUrls: ['./pizza.component.scss'],
 })
-export class PizzaComponent {
+export class AppPizzaComponent {
   @Input()
   public pizza!: Pizza;
 }
