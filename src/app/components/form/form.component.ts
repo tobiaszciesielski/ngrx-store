@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PizzaService } from 'src/app/app.service';
-import { Pizza } from 'src/app/models/Pizza';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-form',
@@ -16,6 +15,10 @@ export class FormComponent implements OnInit {
     imageUrl: ['', Validators.required],
     ingredients: this.fb.array([], Validators.required),
   });
+  isLoading = false;
+  isSubmiting = false;
+  formChanged = false;
+  pizzaId!: number;
 
   get ingredients() {
     return this.pizzaForm.get('ingredients') as FormArray;
@@ -24,16 +27,19 @@ export class FormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
+    private router: Router,
     private pizzaService: PizzaService
   ) {}
 
   ngOnInit() {
-    const pizzaId = Number(this.route.snapshot.paramMap.get('id'));
+    this.pizzaId = Number(this.route.snapshot.paramMap.get('id'));
 
-    if (pizzaId || pizzaId === 0) {
-      this.pizzaService.getPizza(pizzaId).subscribe((pizza) => {
+    if (this.pizzaId || this.pizzaId === 0) {
+      this.isLoading = true;
+      this.pizzaService.getPizza(this.pizzaId).subscribe((pizza) => {
         pizza.ingredients.map((ingredient) => this.addIngredient(ingredient));
         this.pizzaForm.patchValue(pizza);
+        this.isLoading = false;
       });
     }
   }
@@ -47,7 +53,22 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.pizzaForm.value);
-    this.pizzaForm.reset();
+    this.isSubmiting = true;
+    this.pizzaForm.disable();
+
+    if (this.pizzaId || this.pizzaId === 0) {
+      this.pizzaService
+        .updatePizza({ id: this.pizzaId, ...this.pizzaForm.value })
+        .subscribe(() => {
+          this.router.navigate(['/pizzas']);
+        });
+    } else {
+      this.pizzaService
+        .createPizza(this.pizzaForm.value)
+        .pipe(distinctUntilChanged())
+        .subscribe(() => {
+          this.router.navigate(['/pizzas']);
+        });
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Pizza } from './models/Pizza';
 
 @Injectable()
@@ -19,9 +20,17 @@ export class PizzaService {
     return this.http.get<Pizza>(this.endpointUrl(`/pizzas/${id}`));
   }
 
-  deletePizza(id: number) {
-    this.http
+  createPizza(pizza: Pizza): Observable<Pizza> {
+    return this.http.post<Pizza>(this.endpointUrl(`/pizzas`), pizza);
+  }
+
+  updatePizza(pizza: Pizza): Observable<any> {
+    return this.http.put<Pizza>(this.endpointUrl(`/pizzas/${pizza.id}`), pizza);
+  }
+
+  deletePizza(id: number): Observable<any> {
+    return this.http
       .delete<boolean>(this.endpointUrl(`/pizzas/${id}`))
-      .subscribe((res) => console.log(res));
+      .pipe(map(() => id));
   }
 }

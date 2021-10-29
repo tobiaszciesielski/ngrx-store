@@ -22,6 +22,8 @@ export class PizzasComponent {
   }
 
   handleDelete(id: number) {
-    this.pizzaService.deletePizza(id);
+    this.pizzaService.deletePizza(id).subscribe((id) => {
+      this.pizzas = this.pizzas.filter((pizza) => pizza.id !== id);
+    });
   }
 }

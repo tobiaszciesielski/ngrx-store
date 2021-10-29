@@ -1,33 +1,41 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="pizzaForm">
-  <label>
-    <input placeholder="Pizza name" formControlName="name" />
-  </label>
-  <label>
-    <input placeholder="Image url" formControlName="imageUrl" />
-  </label>
+<ng-container *ngIf="isLoading; else formTemplate">
+  <h3>Loading...</h3>
+</ng-container>
 
-  <div formArrayName="ingredients">
-    <h4>Ingredients</h4>
+<ng-template #formTemplate>
+  <form (ngSubmit)="onSubmit()" [formGroup]="pizzaForm">
+    <label>
+      <input placeholder="Pizza name" formControlName="name" />
+    </label>
+    <label>
+      <input placeholder="Image url" formControlName="imageUrl" />
+    </label>
 
-    <ng-container
-      *ngFor="let ingredient of ingredients.controls; let i = index"
-    >
-      <label>
-        <input placeholder="ex. cheese" type="text" [formControlName]="i" />
-        <app-button
-          class="delete-btn"
-          type="button"
-          (onClick)="deleteIngredient(i)"
-        >
-          -
-        </app-button>
-      </label>
-    </ng-container>
+    <div formArrayName="ingredients">
+      <h4>Ingredients</h4>
 
-    <app-button type="button" (onClick)="addIngredient()">
-      + Add ingredient
-    </app-button>
-  </div>
+      <ng-container
+        *ngFor="let ingredient of ingredients.controls; let i = index"
+      >
+        <label>
+          <input placeholder="ex. cheese" type="text" [formControlName]="i" />
+          <app-button
+            class="delete-btn"
+            type="button"
+            (onClick)="deleteIngredient(i)"
+          >
+            -
+          </app-button>
+        </label>
+      </ng-container>
 
-  <app-button [disabled]="!pizzaForm.valid">submit</app-button>
-</form>
+      <app-button type="button" (onClick)="addIngredient()">
+        + Add ingredient
+      </app-button>
+    </div>
+
+    <app-button [disabled]="!(pizzaForm.valid && pizzaForm.dirty)">{{
+      isSubmiting ? "Loading..." : "Submit"
+    }}</app-button>
+  </form>
+</ng-template>
