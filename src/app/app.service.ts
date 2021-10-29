@@ -14,4 +14,8 @@ export class PizzaService {
   getAllPizzas(): Observable<Pizza[]> {
     return this.http.get<Pizza[]>(this.endpointUrl('/pizzas'));
   }
+
+  getPizza(id: number): Observable<Pizza> {
+    return this.http.get<Pizza>(this.endpointUrl(`/pizzas/${id}`));
+  }
 }
