@@ -49,6 +49,9 @@ export class FormComponent implements OnInit {
   }
 
   deleteIngredient(id: number) {
+    if (this.ingredients.at(id).value) {
+      this.pizzaForm.markAsDirty();
+    }
     this.ingredients.removeAt(id);
   }
 

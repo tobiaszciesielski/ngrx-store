@@ -1,20 +1,10 @@
 {
   "pizzas": [
     {
-      "id": 1,
-      "name": "Margaritta",
-      "imageUrl": "https://i0.wp.com/grazynagotuje.pl/wp-content/uploads/2015/06/margherita-tutti-santi.jpg?fit=500%2C351",
-      "ingredients": [
-        "Mozarella",
-        "Tomato sauce "
-      ]
-    },
-    {
       "id": 2,
       "name": "Salami Picante",
       "imageUrl": "https://cdn.upmenu.com/static/product-images/2df739b6-66ff-11e7-93f9-525400841de1/dfd38ca5-7e52-11ea-af2a-525400080321/3/huge/salamedolceitaly.jpg",
       "ingredients": [
-        "Cheese",
         "Salami Picante",
         "Tomato souce"
       ]
