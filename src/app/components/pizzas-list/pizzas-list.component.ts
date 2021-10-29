@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Pizza } from 'src/app/models/Pizza';
 
 @Component({
@@ -9,7 +10,7 @@ import { Pizza } from 'src/app/models/Pizza';
 })
 export class PizzasListComponent {
   @Input()
-  pizzas!: Pizza[];
+  pizzas$!: Observable<Pizza[]>;
 
   @Output()
   onDelete: EventEmitter<number> = new EventEmitter();

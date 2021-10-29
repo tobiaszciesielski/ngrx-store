@@ -1,5 +1,5 @@
 <div class="pizzas">
-  <ng-container *ngFor="let pizza of pizzas">
+  <ng-container *ngFor="let pizza of pizzas$ | async">
     <app-pizza (onDelete)="onDelete.emit($event)" [pizza]="pizza"></app-pizza>
   </ng-container>
 </div>

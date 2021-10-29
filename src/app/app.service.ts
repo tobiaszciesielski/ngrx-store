@@ -24,6 +24,10 @@ export class PizzaService {
     return this.http.post<Pizza>(this.endpointUrl(`/pizzas`), pizza);
   }
 
+  findByName(name: string): Observable<Pizza[]> {
+    return this.http.get<Pizza[]>(this.endpointUrl(`/pizzas?name=${name}`));
+  }
+
   updatePizza(pizza: Pizza): Observable<any> {
     return this.http.put<Pizza>(this.endpointUrl(`/pizzas/${pizza.id}`), pizza);
   }

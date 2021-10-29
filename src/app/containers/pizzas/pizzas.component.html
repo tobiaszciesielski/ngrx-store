@@ -1,6 +1,11 @@
-<ng-container *ngIf="pizzas; else LoadingTemplate">
+<ng-container *ngIf="pizzas$; else LoadingTemplate">
+  <input
+    (input)="name$.next($any($event.target).value)"
+    type="text"
+    placeholder="Search pizzas"
+  />
   <app-pizzas-list
-    [pizzas]="pizzas"
+    [pizzas$]="pizzas$"
     (onDelete)="handleDelete($event)"
   ></app-pizzas-list>
 </ng-container>
