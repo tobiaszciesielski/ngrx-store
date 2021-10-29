@@ -9,7 +9,7 @@ import { Pizza } from 'src/app/models/Pizza';
 })
 export class PizzaComponent {
   @Output()
-  onDelete: EventEmitter<any> = new EventEmitter();
+  onDelete: EventEmitter<number> = new EventEmitter();
 
   @Input()
   public pizza!: Pizza;

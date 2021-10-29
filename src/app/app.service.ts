@@ -18,4 +18,10 @@ export class PizzaService {
   getPizza(id: number): Observable<Pizza> {
     return this.http.get<Pizza>(this.endpointUrl(`/pizzas/${id}`));
   }
+
+  deletePizza(id: number) {
+    this.http
+      .delete<boolean>(this.endpointUrl(`/pizzas/${id}`))
+      .subscribe((res) => console.log(res));
+  }
 }

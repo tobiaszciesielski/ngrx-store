@@ -12,7 +12,7 @@ export class PizzasListComponent {
   pizzas!: Pizza[];
 
   @Output()
-  onDelete: EventEmitter<any> = new EventEmitter();
+  onDelete: EventEmitter<number> = new EventEmitter();
 
   constructor(private router: Router) {}
 

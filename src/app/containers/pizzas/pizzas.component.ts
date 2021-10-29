@@ -20,4 +20,8 @@ export class PizzasComponent {
       this.pizzas = pizzas;
     });
   }
+
+  handleDelete(id: number) {
+    this.pizzaService.deletePizza(id);
+  }
 }

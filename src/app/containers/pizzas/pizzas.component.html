@@ -1,6 +1,9 @@
 <router-outlet></router-outlet>
 <ng-container *ngIf="pizzas; else LoadingTemplate">
-  <app-pizzas-list [pizzas]="pizzas"></app-pizzas-list>
+  <app-pizzas-list
+    [pizzas]="pizzas"
+    (onDelete)="handleDelete($event)"
+  ></app-pizzas-list>
 </ng-container>
 
 <ng-template #LoadingTemplate>
